@@ -95,3 +95,11 @@ if __name__ == "__main__":
         def medir(_p):
             i = min(llamadas["n"], len(duraciones_por_intento)) - 1
             return duraciones_por_intento[i]
+
+        r = descargar_con_control(pull, medir, 2, 1000.0, 1060.0, ruta,
+                                  log=lambda m: None, espera_s=0)
+        estado = r["control"]["estado"]
+        ok = estado == esperado
+        print(f"{'OK ' if ok else 'FALLA'} {nombre}: estado={estado}, "
+              f"intentos={r['control']['intentos']}")
+        assert ok
