@@ -79,4 +79,5 @@ def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
     log(f"CONTROL ch{channel}: REVISION MANUAL - {motivo}")
     return res
 
-    
+if __name__ == "__main__":
+    import tempfile
