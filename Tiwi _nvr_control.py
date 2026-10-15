@@ -11,3 +11,10 @@ def es_clip_largo(duracion_real_s, pedido_s):
         return None
     limite = max(pedido_s * FACTOR_TOLERANCIA, pedido_s + MARGEN_EXTRA_S)
     return duracion_real_s > limite
+
+def _ventana_para_intento(t0, t1, intento):
+    if intento <= 1:
+        return t0, t1
+    centro = (t0 + t1) / 2.0
+    mitad = max(5.0, ((t1 - t0) / 2.0) / intento)
+    return centro - mitad, centro + mitad
