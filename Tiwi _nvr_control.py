@@ -81,3 +81,8 @@ def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
 
 if __name__ == "__main__":
     import tempfile
+
+    def prueba(nombre, duraciones_por_intento, esperado):
+        carpeta = tempfile.mkdtemp()
+        ruta = os.path.join(carpeta, "CH02.mp4")
+        llamadas = {"n": 0}
