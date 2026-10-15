@@ -18,3 +18,13 @@ def _ventana_para_intento(t0, t1, intento):
     centro = (t0 + t1) / 2.0
     mitad = max(5.0, ((t1 - t0) / 2.0) / intento)
     return centro - mitad, centro + mitad
+
+def _escribir_marca_revision(path, motivo):
+    marca = path + ".REVISAR.txt"
+    try:
+        with open(marca, "w", encoding="utf-8") as f:
+            f.write("PENDIENTE DE REVISION MANUAL\n")
+            f.write(motivo + "\n")
+    except Exception:
+        pass
+    return marca
