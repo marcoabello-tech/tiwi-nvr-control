@@ -109,3 +109,4 @@ if __name__ == "__main__":
     prueba("siempre largo -> revisión manual", [2880.0, 2880.0, 2880.0],
            "revision_manual")
     prueba("no se puede medir", [None], "sin_medir")
+    print("Todas las pruebas pasaron.")
