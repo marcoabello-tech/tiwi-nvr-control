@@ -92,3 +92,6 @@ if __name__ == "__main__":
             open(out, "wb").write(b"x" * 2048)
             return {"channel": ch, "path": out, "size": 2048}
 
+        def medir(_p):
+            i = min(llamadas["n"], len(duraciones_por_intento)) - 1
+            return duraciones_por_intento[i]
