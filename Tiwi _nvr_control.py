@@ -68,3 +68,15 @@ def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
         if intento < MAX_INTENTOS:
             time.sleep(espera_s)
             
+    motivo = (f"El clip dura {dur:.0f}s y el cruce fue de {pedido_s:.0f}s. "
+              f"Se intentó acotar {MAX_INTENTOS} veces sin éxito. "
+              f"Buscar el camión cerca del instante del cruce.")
+    _escribir_marca_revision(out_path, motivo)
+    res["control"] = {
+        "estado": "revision_manual", "intentos": MAX_INTENTOS,
+        "duracion_real_s": round(dur, 1), "pedido_s": round(pedido_s, 1),
+        "motivo": motivo}
+    log(f"CONTROL ch{channel}: REVISION MANUAL - {motivo}")
+    return res
+
+    
