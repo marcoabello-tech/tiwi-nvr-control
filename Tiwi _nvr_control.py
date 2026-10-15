@@ -42,3 +42,6 @@ def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
             log(f"CONTROL ch{channel}: el NVR no devolvió clip "
                 f"(intento {intento}/{MAX_INTENTOS})")
             return None
+
+            dur = medir_fn(out_path)
+            largo = es_clip_largo(dur, b - a)
