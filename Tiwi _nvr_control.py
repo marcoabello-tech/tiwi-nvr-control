@@ -28,3 +28,9 @@ def _escribir_marca_revision(path, motivo):
     except Exception:
         pass
     return marca
+
+def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
+                          log=print, espera_s=2.0):
+    pedido_s = float(t1) - float(t0)
+    res = None
+    dur = None
