@@ -103,3 +103,9 @@ if __name__ == "__main__":
         print(f"{'OK ' if ok else 'FALLA'} {nombre}: estado={estado}, "
               f"intentos={r['control']['intentos']}")
         assert ok
+
+    prueba("clip correcto de entrada", [70.0], "ok")
+    prueba("largo y se corrige al reintentar", [2880.0, 40.0], "ok")
+    prueba("siempre largo -> revisión manual", [2880.0, 2880.0, 2880.0],
+           "revision_manual")
+    prueba("no se puede medir", [None], "sin_medir")
