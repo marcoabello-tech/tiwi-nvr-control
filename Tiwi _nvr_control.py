@@ -63,3 +63,8 @@ def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
             log(f"CONTROL ch{channel}: OK ({dur:.0f}s) en intento {intento}")
             return res
 
+        log(f"CONTROL ch{channel}: clip largo ({dur:.0f}s para un cruce de "
+            f"{b - a:.0f}s), intento {intento}/{MAX_INTENTOS}")
+        if intento < MAX_INTENTOS:
+            time.sleep(espera_s)
+            
