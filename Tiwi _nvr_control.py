@@ -53,3 +53,13 @@ def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
                 "motivo": "no se pudo medir la duración del archivo"}
             log(f"CONTROL ch{channel}: no se pudo medir el clip, se sube igual")
             return res
+
+            if not largo:
+            res["control"] = {
+                "estado": "ok", "intentos": intento,
+                "duracion_real_s": round(dur, 1),
+                "pedido_s": round(pedido_s, 1),
+                "motivo": "la duración coincide con el cruce"}
+            log(f"CONTROL ch{channel}: OK ({dur:.0f}s) en intento {intento}")
+            return res
+
