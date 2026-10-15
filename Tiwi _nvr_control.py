@@ -34,3 +34,11 @@ def descargar_con_control(pull_fn, medir_fn, channel, t0, t1, out_path,
     pedido_s = float(t1) - float(t0)
     res = None
     dur = None
+
+    for intento in range(1, MAX_INTENTOS + 1):
+        a, b = _ventana_para_intento(t0, t1, intento)
+        res = pull_fn(channel, a, b, out_path)
+        if not res:
+            log(f"CONTROL ch{channel}: el NVR no devolvió clip "
+                f"(intento {intento}/{MAX_INTENTOS})")
+            return None
