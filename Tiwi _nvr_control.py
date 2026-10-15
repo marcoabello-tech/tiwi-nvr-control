@@ -86,3 +86,9 @@ if __name__ == "__main__":
         carpeta = tempfile.mkdtemp()
         ruta = os.path.join(carpeta, "CH02.mp4")
         llamadas = {"n": 0}
+
+        def pull(ch, a, b, out):
+            llamadas["n"] += 1
+            open(out, "wb").write(b"x" * 2048)
+            return {"channel": ch, "path": out, "size": 2048}
+
